@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://tichter.github.io/pwlisten/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://tichter.github.io/pwlisten/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://tichter.github.io/pwlisten/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="https://tichter.github.io/pwlisten/images/favicon/manifest.json">
+    <link rel="mask-icon" href="https://tichter.github.io/pwlisten/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800,600' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+
+    <!-- Include jQuery Mobile stylesheets -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+    <!-- Include the jQuery library -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <!-- Include the jQuery Mobile library-->
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <!-- Listen -->
+    <link rel="stylesheet" href="https://tichter.github.io/pwlisten/assets/css/listen.css">
+    <script src="https://tichter.github.io/pwlisten/assets/js/listen.js"></script>
+
+</head> 
+
+
+<body>
+
+    <div data-role='page' id='id-'>
+
+    
+    <div data-role="header">
+    
+    <!-- Main header title -->
+    <h1 class='title'> Welcome </h1>
+
+    <!-- Configuration of next button -->
+    
+    <a
+    href="https://tichter.github.io/pwlisten/pickthebest/"
+    class='ui-btn-right ui-btn ui-btn-inline ui-mini
+           ui-corner-all ui-btn-icon-right ui-icon-carat-r next'>
+    Next
+    </a>
+    
+
+    </div>
+
+    <div data-role="main" class="ui-content">
+    <p>Thank you for taking part in this experiment!</p>
+
+<p>During this experiment you will be presented with pairs of 5 second long audio clips. Your task is to first listen to the samples, by clicking on the number. Then decide, which of the two samples sounds more natural <strong>DEFINEWHATLIKINGMOREIS</strong> to you. Indicate your decision, by checking (clicking) the grey box directly under the number. Then press next to proceed to the next pair.</p>
+
+<p>When you are done with all the samples, a popup will open. Please click on submit in order to submit your work and access your <strong>returncode</strong>. You will need to enter this code at Amazon mechanical turk, in order to finish the HIT.</p>
+
+<p>Note that we will hand review your work before we accept it. If we reject your work, you:</p>
+
+<ul>
+  <li>Haven’t submitted your work.</li>
+  <li>Haven’t entered the return code at amazon mechanical turk.</li>
+  <li>Haven’t done the work properly.</li>
+</ul>
+
+<p>Examples of things that might influence your decision:</p>
+
+<ul>
+  <li>Portions of the original recording missing</li>
+  <li>Artefacts, such as noise</li>
+  <li>Changes to the timbre</li>
+  <li>The presence of other instruments that are absent in the reference, e.g. guitars, drums</li>
+</ul>
+
+<p>Blow you can see a couple of screenshots which indicate the steps you need to do.</p>
+
+<ol>
+  <li>Enter the code, which was given you during the HIT at Amazon Mechanical Turk</li>
+  <li>Click submit</li>
+  <li>Listen to the two audio clips</li>
+  <li>Select the clip, that sounds more natural to you</li>
+  <li>Press Next
+    <ul>
+      <li>Do steps 3-5 until there are no more tasks</li>
+    </ul>
+  </li>
+  <li>Press Submit</li>
+  <li>Copy the code out of the field and past it at Amazon Mechanical Turk in order to finish the HIT</li>
+</ol>
+
+    </div>
+
+
+    <div>
+      <input type="hidden" id="returncode" readonly/>
+    </div>
+
+    <div class="ui-content" id="screenshots">
+      <img src="https://tichter.github.io/pwlisten/images/1inlogscreen.png">
+      <img src="https://tichter.github.io/pwlisten/images/1taskscreen.png">
+      <img src="https://tichter.github.io/pwlisten/images/1submitscreen.png">
+      <img src="https://tichter.github.io/pwlisten/images/1returncodescreen.png">
+    </div>
+
+    <script type="text/javascript">
+    a = "https://tichter.github.io/pwlisten/pickthebest/"
+    b = "https://tichter.github.io/pwlisten/pickthebest/"
+    siteurl = window.location.href
+    if(a != b){
+      document.getElementById("screenshots").style.display = "none"
+      var urlquery = window.location.search
+      config = 'null'
+      config = JSON.parse(config)
+      for(var i = 0; i < config.codes.length; i++){
+        if (urlquery == ("?=" + config.codes[i].intercode)){
+          document.getElementById("returncode").type = "text"
+          document.getElementById("returncode").value = config.codes[i].retcode
+        }
+      }
+    }
+
+    </script>
+
+</div>
+
+</body>
+
+</html>

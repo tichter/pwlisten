@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://tichter.github.io/pwlisten/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://tichter.github.io/pwlisten/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://tichter.github.io/pwlisten/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="https://tichter.github.io/pwlisten/images/favicon/manifest.json">
+    <link rel="mask-icon" href="https://tichter.github.io/pwlisten/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800,600' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+
+    <!-- Include jQuery Mobile stylesheets -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+    <!-- Include the jQuery library -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <!-- Include the jQuery Mobile library-->
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <!-- Listen -->
+    <link rel="stylesheet" href="https://tichter.github.io/pwlisten/assets/css/listen.css">
+    <script src="https://tichter.github.io/pwlisten/assets/js/listen.js"></script>
+
+</head> 
+
+
+<body>
+
+    <div data-role='page' id='id-returncode'>
+
+    
+    <div data-role="header">
+    
+    <!-- Main header title -->
+    <h1 class='title'> Get your returncode </h1>
+
+    <!-- Configuration of next button -->
+    
+    <a
+    href="https://tichter.github.io/pwlisten/"
+    class='ui-btn-right ui-btn ui-btn-inline ui-mini
+           ui-corner-all ui-btn-icon-right ui-icon-carat-r next'>
+    Next
+    </a>
+    
+
+    </div>
+
+    <div data-role="main" class="ui-content">
+    <p>Thank you for taking part in the experiment. Below you can find your code, which you need to enter at amazon mturk in order to finish the HIT.</p>
+
+<p>Your HIT will be rejected, if you fail to provide this code at amazon mechanical turk.</p>
+
+<p>This is your return code:</p>
+
+    </div>
+
+
+    <div>
+      <input type="hidden" id="returncode" readonly/>
+    </div>
+
+    <div class="ui-content" id="screenshots">
+      <img src="https://tichter.github.io/pwlisten/images/1inlogscreen.png">
+      <img src="https://tichter.github.io/pwlisten/images/1taskscreen.png">
+      <img src="https://tichter.github.io/pwlisten/images/1submitscreen.png">
+      <img src="https://tichter.github.io/pwlisten/images/1returncodescreen.png">
+    </div>
+
+    <script type="text/javascript">
+    a = "https://tichter.github.io/pwlisten/"
+    b = "https://tichter.github.io/pwlisten/pickthebest/"
+    siteurl = window.location.href
+    if(a != b){
+      document.getElementById("screenshots").style.display = "none"
+      var urlquery = window.location.search
+      config = '{"codes":[{"intercode":"inttest1","retcode":"rettest1"},{"intercode":"inttest2","retcode":"rettest2"}]}'
+      config = JSON.parse(config)
+      for(var i = 0; i < config.codes.length; i++){
+        if (urlquery == ("?=" + config.codes[i].intercode)){
+          document.getElementById("returncode").type = "text"
+          document.getElementById("returncode").value = config.codes[i].retcode
+        }
+      }
+    }
+
+    </script>
+
+</div>
+
+</body>
+
+</html>
